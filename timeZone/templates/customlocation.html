@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<form action="/add" method="post">
+    <h2> Add custom location</h2>
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="custom_location_latitude" placeholder="Latitude" type="number">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="custom_location_longitude" placeholder="Longitude" type="number">
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
+{% endblock %}

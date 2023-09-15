@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+    {% if status %}
+    <p>no location in the data base consider add a custume location</p>
+    <form action="/addcustom" method="post">
+        <h2> Add location from our data base</h2>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="latitude" name="latitude" placeholder="Latatude" type="number">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="longitude" name="longitude" placeholder="Longatude" type="number">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="name" placeholder="name" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Add Custome location</button>
+    </form>
+    {% else %}
+    <form action="/add" method="post">
+        <h2> Add location from our data base</h2>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="location" name="location" placeholder="Search for locaiton" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    {% endif %}
+{% endblock %}

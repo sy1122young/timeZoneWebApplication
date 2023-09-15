@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<form action="/queryAPI" method="post">
+    <h2> Add location from Time API</h2>
+    <h3>format as follows</h3>
+    <p>Europe/Amsterdam</p>
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="location" name="location" placeholder="location" type="text">
+    </div>
+    {% if status %}
+    <p>No data/ Invalid format</p>
+    {% endif %}
+    <button class="btn btn-primary" type="submit">Get timeZone</button>
+</form>
+{% if found %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Day</th>
+        <th scope="col">Time</th>
+        <th scope="col">TimeZone</th>
+      </tr>
+    </thead>
+
+    <tbody class="table-group-divider">
+      {% for d in data %}
+        <tr>
+          <td>{{d.date}}</td>
+          <td>{{d.day[0]}}</td>
+          <td>{{d.time[0]}}</td>
+          <td>{{d.timeZone}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+  </table>
+  {% endif %}
+{% endblock %}
